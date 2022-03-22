@@ -1,0 +1,37 @@
+version: 2.1
+orbs:
+  node: circleci/node@4.7.0
+  heroku: circleci/heroku@1.2.6
+
+jobs:
+  build_and_test:
+    docker:
+      - image: mcr.microsoft.com/playwright:focal
+    environment:
+      NODE_ENV: development
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          command: npx playwright test
+          name: Build app
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
+
+workflows:
+  on_commit:
+    jobs:
+      - build_and_test
+  nightly:
+    triggers:
+      - schedule:
+          cron: "30 16 * * 2"       
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - build_and_test
