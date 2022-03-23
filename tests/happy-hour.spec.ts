@@ -25,18 +25,4 @@ test("test", async ({ page }) => {
   const choice2 = await page.innerText("h1.title > span")
   console.log(`Option 2: ${choice2}`)
 
-  // Click button:has-text("Close")
-  await page.locator('button:has-text("Close")').click();
-
-  await page.locator("#wheelCanvas").click({
-    position: {
-      x: 302,
-      y: 395,
-    },
-  });
-
-
-  const choice3 = await page.innerText("h1.title > span")
-  console.log(`Option 3: ${choice3}`)
-
 });
