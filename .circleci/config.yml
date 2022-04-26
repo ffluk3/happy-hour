@@ -19,6 +19,8 @@ jobs:
       - run:
           command: npm run time-to-drink
           name: Where are we going?
+      - store_artifacts:
+          path: ./videos
       - persist_to_workspace:
           root: ~/project
           paths:

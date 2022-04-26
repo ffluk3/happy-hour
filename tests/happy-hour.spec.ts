@@ -1,28 +1,20 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 
-test("test", async ({ page }) => {
+test("test", async ({ browserName, browser  }) => {
+  const context = await browser.newContext({ recordVideo: { dir: 'videos/' } });
+
+  const page = await context.newPage();
+
   // Go to https://wheelofnames.com/95m-aky
   await page.goto("https://wheelofnames.com/95m-aky");
 
   // Click #bottomInstruction
   await page.locator("#bottomInstruction").click();
 
-  // Click text=Home & Away
-  const choice1 = await page.innerText("h1.title > span")
-  console.log(`Option 1: ${choice1}`)
+  const choice1 = await page.innerText("div.text-h3")
+  console.log(`Option ${browserName}: ${choice1}`)
   
-  // Click button:has-text("Close")
   await page.locator('button:has-text("Close")').click();
 
-  // Click #wheelCanvas
-  await page.locator("#wheelCanvas").click({
-    position: {
-      x: 302,
-      y: 395,
-    },
-  });
-
-  const choice2 = await page.innerText("h1.title > span")
-  console.log(`Option 2: ${choice2}`)
-
+  await context.close();
 });
