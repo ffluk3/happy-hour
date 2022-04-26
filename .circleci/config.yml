@@ -14,8 +14,11 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: npx playwright test
-          name: Build app
+          command: npm run hydrate
+          name: Make sure you drink some water!
+      - run:
+          command: npm run time-to-drink
+          name: Where are we going?
       - persist_to_workspace:
           root: ~/project
           paths:

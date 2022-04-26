@@ -5,5 +5,9 @@
   "license": "MIT",
   "devDependencies": {
     "@playwright/test": "^1.20.0"
+  },
+  "scripts": {
+    "hydrate": "playwright install --with-deps",
+    "time-to-drink": "playwright test"
   }
 }
