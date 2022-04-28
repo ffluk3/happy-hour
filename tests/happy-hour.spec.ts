@@ -1,20 +1,9 @@
-import { test } from "@playwright/test";
+import { test } from "./fixtures/wheel-of-names";
 
-test("test", async ({ browserName, browser  }) => {
-  const context = await browser.newContext({ recordVideo: { dir: 'videos/' } });
-
-  const page = await context.newPage();
-
-  // Go to https://wheelofnames.com/95m-aky
-  await page.goto("https://wheelofnames.com/95m-aky");
-
-  // Click #bottomInstruction
-  await page.locator("#bottomInstruction").click();
-
-  const choice1 = await page.innerText("div.text-h3")
-  console.log(`Option ${browserName}: ${choice1}`)
-  
-  await page.locator('button:has-text("Close")').click();
-
-  await context.close();
-});
+test.describe("Happy Hour Wheel Spin", () => {
+  test("spins the wheel and returns the result", async ({ browserName, wheelOfNames }) => {
+    await wheelOfNames.spinWheel();
+    const result = await wheelOfNames.getResult();
+    console.log(`Option ${browserName}: ${result}`);
+  });
+})
