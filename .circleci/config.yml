@@ -12,12 +12,12 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          pkg-manager: npm
+          pkg-manager: yarn
       - run:
-          command: npm run hydrate
+          command: yarn hydrate
           name: Make sure you drink some water!
       - run:
-          command: npm run time-to-drink
+          command: yarn time-to-drink
           name: Where are we going?
       - store_artifacts:
           path: ./videos
