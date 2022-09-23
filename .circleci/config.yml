@@ -4,7 +4,27 @@ orbs:
   heroku: circleci/heroku@1.2.6
 
 jobs:
-  build_and_test:
+  unit_test:
+    docker:
+      - image: mcr.microsoft.com/playwright:focal
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn test
+          name: Run Jest tests
+  lint:
+    docker:
+      - image: mcr.microsoft.com/playwright:focal
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn test
+          name: Run Jest tests
+  happy_hour:
     docker:
       - image: mcr.microsoft.com/playwright:focal
     environment:
@@ -29,14 +49,24 @@ jobs:
 workflows:
   on_commit:
     jobs:
-      - build_and_test
+      - lint
+      - unit_test
+      - request_happy_hour:
+          type: approval
+          requires:
+            - lint
+            - unit_test
+      - happy_hour:
+          requires:
+            - request_happy_hour
   nightly:
     triggers:
       - schedule:
-          cron: "30 16 * * 2"       
+          # Run at 3:30pm on Tuesdays
+          cron: "30 22 * * 2"
           filters:
             branches:
               only:
                 - main
     jobs:
-      - build_and_test
+      -   happy_hour
