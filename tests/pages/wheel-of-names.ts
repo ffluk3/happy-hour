@@ -6,7 +6,7 @@ export class WheelOfNamesPage {
 	readonly instructionLayer: Locator;
 	readonly closeModalButton: Locator;
 
-	constructor(private readonly page: Page) {
+	constructor(public readonly page: Page) {
 		this.resultContainer = page.locator('div.text-h3');
 		this.instructionLayer = page.locator('#instructionLayer');
 

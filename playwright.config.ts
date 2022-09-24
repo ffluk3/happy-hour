@@ -7,6 +7,7 @@ const config: PlaywrightTestConfig = {
 	use: {
 		trace: 'on-first-retry',
 	},
+	testDir: 'tests',
 	projects: [
 		{
 			name: 'chromium',

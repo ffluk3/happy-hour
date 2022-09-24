@@ -13,11 +13,16 @@ export async function sendEmailForHappyHour(location: string) {
 	});
 
 	const info = await transporter.sendMail({
-		from: '"Lucas Shadler" <happy-hour@mail.lshadler.io>', // Sender address
+		from: '"Happy Hour Bot" <happy-hour@mail.lshadler.io>', // Sender address
 		to: 'social-lshadler-test-aaaahq4ztwhidtv7ejkgna3jha@flockfreight.slack.com', // List of receivers
-		subject: 'The Wheel has been spun!',
-		html: `<b>We are going to ${location}</b>`,
-
+		subject: `We are going to ${location}!`,
+		html: '<img src="cid:wheel-spin-proof" alt="Wheel spin"/></img>',
+		attachments: [
+			{
+				cid: 'wheel-spin-proof',
+				path: `${process.cwd()}/images/wheel-spin.png`,
+			},
+		],
 	});
 
 	console.log('Message sent: %s', info.messageId);
