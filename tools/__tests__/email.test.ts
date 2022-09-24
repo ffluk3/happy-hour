@@ -19,7 +19,7 @@ describe('email sender', () => {
 		expect(mockTransport.sendMail).toHaveBeenCalledTimes(1);
 
 		expect(mockTransport.sendMail).toHaveBeenCalledWith(expect.objectContaining({
-			subject: 'We are going to Roxy\'s!',
+			subject: 'Wheel Spun! We are going to Roxy\'s',
 		}));
 
 		expect(consoleLogSpy).toHaveBeenCalledWith('Message sent: %s', 'test');

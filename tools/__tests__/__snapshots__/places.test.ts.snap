@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Places matches snapshot (sorry Zane) 1`] = `
+[
+  "Roxy's",
+  "Beachside",
+  "Home & Away",
+  "Culture",
+  "Biergarten",
+  "Union Kitchen & Tap",
+  "Death By Tequila",
+  "Piña",
+  "Modern Times",
+]
+`;

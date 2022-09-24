@@ -14,9 +14,9 @@ export async function sendEmailForHappyHour(location: string) {
 
 	const info = await transporter.sendMail({
 		from: '"Happy Hour Bot" <happy-hour@mail.lshadler.io>', // Sender address
-		to: 'social-lshadler-test-aaaahq4ztwhidtv7ejkgna3jha@flockfreight.slack.com', // List of receivers
-		subject: `We are going to ${location}!`,
-		html: '<img src="cid:wheel-spin-proof" alt="Wheel spin"/></img>',
+		to: process.env.SLACK_CHANNEL_EMAIL, // List of receivers
+		subject: `Wheel Spun! We are going to ${location}`,
+		html: '<img src="cid:wheel-spin-proof" width="500px" alt="Wheel spin"/></img>',
 		attachments: [
 			{
 				cid: 'wheel-spin-proof',

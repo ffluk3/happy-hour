@@ -1,5 +1,6 @@
 import type {Locator, Page} from '@playwright/test';
 import {expect} from '@playwright/test';
+import {happyHourLocations} from '../../tools/places';
 
 export class WheelOfNamesPage {
 	readonly resultContainer: Locator;
@@ -16,16 +17,12 @@ export class WheelOfNamesPage {
 	}
 
 	async goto() {
-		await Promise.all([
-			// Ensure JS has been bootstrapped
-			this.page.waitForRequest('**/*logSharedWheelRead'),
-			// This action triggers the request
-			this.page.goto('https://wheelofnames.com/95m-aky'),
-		]);
+		await this.page.goto('https://wheelofnames.com');
+		await this.page.locator('div.basic-editor').fill(happyHourLocations.join('\n'));
 	}
 
 	async spinWheel() {
-		await this.instructionLayer.isVisible();
+		// Await this.instructionLayer.isVisible();
 		await this.page.press('html', 'Control+Enter');
 	}
 
