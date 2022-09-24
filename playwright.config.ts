@@ -3,6 +3,7 @@ import {devices} from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
 	forbidOnly: Boolean(process.env.CI),
+	timeout: 12000,
 	retries: process.env.CI ? 2 : 0,
 	use: {
 		trace: 'on-first-retry',
