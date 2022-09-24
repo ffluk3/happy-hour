@@ -27,7 +27,7 @@ export class WheelOfNamesPage {
 	}
 
 	async getResult(): Promise<string> {
-		const result = await this.resultContainer.innerText();
+		const result = await this.resultContainer.innerText({timeout: 30 * 1000});
 
 		expect(result).toBeTruthy();
 
