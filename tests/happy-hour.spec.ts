@@ -6,8 +6,9 @@ test.describe('Happy Hour Wheel Spin', () => {
 		await wheelOfNames.spinWheel();
 		const result = await wheelOfNames.getResult();
 		await wheelOfNames.page.screenshot({
-			path: `${process.cwd()}/images/wheel-spin.png`,
-
+			path: `${process.cwd()}/images/wheel-spin.jpg`,
+			timeout: 60 * 1000,
+			quality: 20,
 		});
 
 		console.log(`Option ${browserName}: ${result}`);
