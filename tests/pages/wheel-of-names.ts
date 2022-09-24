@@ -19,6 +19,7 @@ export class WheelOfNamesPage {
 	async goto() {
 		await this.page.goto('https://wheelofnames.com');
 		await this.page.locator('div.basic-editor').fill(happyHourLocations.join('\n'));
+		await this.page.locator('span:has-text(\'Close ad\') > button').click();
 	}
 
 	async spinWheel() {
@@ -27,7 +28,7 @@ export class WheelOfNamesPage {
 	}
 
 	async getResult(): Promise<string> {
-		const result = await this.resultContainer.innerText();
+		const result = await this.resultContainer.innerText({timeout: 30 * 1000});
 
 		expect(result).toBeTruthy();
 

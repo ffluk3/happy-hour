@@ -20,6 +20,13 @@ describe('email sender', () => {
 
 		expect(mockTransport.sendMail).toHaveBeenCalledWith(expect.objectContaining({
 			subject: 'Wheel Spun! We are going to Roxy\'s',
+			attachments: [
+				{
+					cid: 'wheel-spin-proof',
+					// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+					path: expect.stringContaining('wheel-spin.jpg'),
+				},
+			],
 		}));
 
 		expect(consoleLogSpy).toHaveBeenCalledWith('Message sent: %s', 'test');

@@ -20,7 +20,7 @@ export async function sendEmailForHappyHour(location: string) {
 		attachments: [
 			{
 				cid: 'wheel-spin-proof',
-				path: `${process.cwd()}/images/wheel-spin.png`,
+				path: `${process.cwd()}/images/wheel-spin.jpg`,
 			},
 		],
 	});

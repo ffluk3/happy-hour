@@ -1,11 +1,12 @@
 export const happyHourLocations = [
-	'Roxy\'s',
 	'Beachside',
+	'Union Kitchen & Tap',
+	'1st Street Bar & Grill',
+	'Roxy\'s',
 	'Home & Away',
 	'Culture',
 	'Biergarten',
-	'Union Kitchen & Tap',
 	'Death By Tequila',
-	'Piña',
-	'Modern Times',
+	'3rd Corner Wine Shop',
+	'Encinitas Ale House',
 ];
