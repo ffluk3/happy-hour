@@ -14,6 +14,23 @@ module.exports = {
 				'*.tsx',
 			],
 		},
+		{
+			extends: [
+				'plugin:playwright/playwright-test',
+			],
+			files: [
+				'tests/**/*.ts',
+			],
+		},
+		{
+			extends: [
+				'plugin:jest/recommended',
+			],
+			plugins: ['jest'],
+			files: [
+				'**/__tests__/*',
+			],
+		},
 	],
 	parserOptions: {
 		ecmaVersion: 'latest',

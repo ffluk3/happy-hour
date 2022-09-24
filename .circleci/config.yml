@@ -12,8 +12,10 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
       - run:
-          command: yarn test
+          command: yarn test --collectCoverage=true
           name: Run Jest tests
+      - store_artifacts:
+          path: coverage
   lint:
     docker:
       - image: mcr.microsoft.com/playwright:focal
@@ -41,10 +43,8 @@ jobs:
           name: Where are we going?
       - store_artifacts:
           path: ./videos
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - .
+      - store_artifacts:
+          path: ./test-results
 
 workflows:
   on_commit:

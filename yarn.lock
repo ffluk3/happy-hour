@@ -1257,7 +1257,7 @@
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/utils@5.38.0":
+"@typescript-eslint/utils@5.38.0", "@typescript-eslint/utils@^5.10.0":
   version "5.38.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-5.38.0.tgz#5b31f4896471818153790700eb02ac869a1543f4"
   integrity sha512-6sdeYaBgk9Fh7N2unEXGz+D+som2QCQGPAf1SxrkEr+Z32gMreQ0rparXTNGRRfYUWk/JzbGdcM8NSSd6oqnTA==
@@ -1791,6 +1791,18 @@ eslint-config-xo@^0.42.0:
   integrity sha512-HIfd+AM6tHFoaZ/NXYDV3Mr/CJrAj/DoP6IOYt1/v+90XtCwVYOfW7LXbRDYDmhQMzT16h7eqPRcex72waRqdA==
   dependencies:
     confusing-browser-globals "1.0.11"
+
+eslint-plugin-jest@27.0.4:
+  version "27.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-27.0.4.tgz#ab9c7b3f48bfade4762c24c415a5d9bbc0174a61"
+  integrity sha512-BuvY78pHMpMJ6Cio7sKg6jrqEcnRYPUc4Nlihku4vKx3FjlmMINSX4vcYokZIe+8TKcyr1aI5Kq7vYwgJNdQSA==
+  dependencies:
+    "@typescript-eslint/utils" "^5.10.0"
+
+eslint-plugin-playwright@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-playwright/-/eslint-plugin-playwright-0.11.2.tgz#876057d4ab19d00b44bf004e27d5ace2c8bffada"
+  integrity sha512-uRLRLk7uTzc8NE6t4wBU8dijQwHvC66R/h7xwdM779jsJjMUtSmeaB8ayRkkpfwi+UU5BEfwvDANwmE+ccMVDw==
 
 eslint-scope@^5.1.1:
   version "5.1.1"
