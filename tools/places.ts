@@ -9,4 +9,5 @@ export const happyHourLocations = [
 	'Death By Tequila',
 	'3rd Corner Wine Shop',
 	'Encinitas Ale House',
+	'American Legion Post 416',
 ];
