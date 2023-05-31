@@ -24,8 +24,8 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
       - run:
-          command: yarn test
-          name: Run Jest tests
+          command: yarn lint
+          name: Lint the project
   happy_hour:
     docker:
       - image: mcr.microsoft.com/playwright:focal

@@ -1,5 +1,6 @@
 import {test} from './fixtures/wheel-of-names';
 import {sendEmailForHappyHour} from '../tools/email';
+import {readFile} from 'fs/promises';
 
 test.describe('Happy Hour Wheel Spin', () => {
 	test('spins the wheel and returns the result', async ({browserName, wheelOfNames}) => {
@@ -14,8 +15,11 @@ test.describe('Happy Hour Wheel Spin', () => {
 			quality: 20,
 		});
 
+		// eslint-disable-next-line playwright/no-conditional-in-test -- Is this really a test at this point?
 		if (process.env.CI) {
 			await sendEmailForHappyHour(result);
 		}
+
+		const placesConfig = readFile;
 	});
 });
