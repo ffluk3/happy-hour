@@ -1,6 +1,6 @@
 import type {Locator, Page} from '@playwright/test';
 import {expect} from '@playwright/test';
-import {happyHourLocations} from '../../tools/places';
+import placesConfig from '../../tools/places.json';
 
 export class WheelOfNamesPage {
 	readonly resultContainer: Locator;
@@ -17,8 +17,12 @@ export class WheelOfNamesPage {
 	}
 
 	async goto() {
+		const happyHourLocations = Object.keys(placesConfig);
+
 		await this.page.goto('https://wheelofnames.com');
-		await this.page.locator('div.basic-editor').fill(happyHourLocations.join('\n'));
+		await this.page
+			.locator('div.basic-editor')
+			.fill(happyHourLocations.join('\n'));
 		await this.page.locator('span:has-text(\'Close ad\') > button').click();
 	}
 

@@ -1,7 +1,7 @@
-import {happyHourLocations} from '../places';
+import places from '../places.json';
 
 describe('Places', () => {
 	it('matches snapshot (sorry Zane)', () => {
-		expect(happyHourLocations).toMatchSnapshot();
+		expect(Object.keys(places)).toMatchSnapshot();
 	});
 });
