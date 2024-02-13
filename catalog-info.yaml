@@ -4,6 +4,7 @@ metadata:
   name: happy-hour
   annotations:
     github.com/project-slug: ffluk3/happy-hour
+    circleci.com/project-slug: github/ffluk3/happy-hour
 spec:
   type: other
   lifecycle: unknown
