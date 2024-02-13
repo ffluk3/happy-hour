@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: happy-hour
+  annotations:
+    github.com/project-slug: ffluk3/happy-hour
+spec:
+  type: other
+  lifecycle: unknown
+  owner: guests
