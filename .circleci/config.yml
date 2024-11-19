@@ -59,14 +59,3 @@ workflows:
       - happy_hour:
           requires:
             - request_happy_hour
-  nightly:
-    triggers:
-      - schedule:
-          # Run at 3:30pm on Tuesdays
-          cron: "30 22 * * 2"
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      -   happy_hour
