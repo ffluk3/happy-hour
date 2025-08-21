@@ -2,11 +2,6 @@
 
 exports[`Places matches snapshot (sorry Zane) 1`] = `
 [
-  "Union Kitchen & Tap",
-  "1st Street Bar & Grill",
-  "Culture",
-  "Biergarten",
-  "Death By Tequila",
-  "Encinitas Ale House",
+  "Duck Foot (Leucadia)",
 ]
 `;

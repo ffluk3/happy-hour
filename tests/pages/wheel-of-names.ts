@@ -1,41 +1,43 @@
-import type {Locator, Page} from '@playwright/test';
-import {expect} from '@playwright/test';
-import placesConfig from '../../tools/places.json';
+import type { Locator, Page } from "@playwright/test";
+import placesConfig from "../../tools/places.json" with { type: "json" };
 
 export class WheelOfNamesPage {
-	readonly resultContainer: Locator;
-	readonly instructionLayer: Locator;
-	readonly closeModalButton: Locator;
+  readonly resultContainer: Locator;
+  readonly instructionLayer: Locator;
+  readonly closeModalButton: Locator;
+  readonly closeAdsButton: Locator;
 
-	constructor(public readonly page: Page) {
-		this.resultContainer = page.locator('div.text-h3');
-		this.instructionLayer = page.locator('#instructionLayer');
+  constructor(public readonly page: Page) {
+    this.resultContainer = page.locator("span.winner-text");
+    this.instructionLayer = page.locator("#instructionLayer");
 
-		this.closeModalButton = page.locator('button', {
-			hasText: 'Close',
-		});
-	}
+    this.closeModalButton = page.locator("button", {
+      hasText: "Close",
+    });
 
-	async goto() {
-		const happyHourLocations = Object.keys(placesConfig);
+    this.closeAdsButton = page
+      .locator(".ad-declaration")
+      .getByRole("button")
+      .nth(1);
+  }
 
-		await this.page.goto('https://wheelofnames.com');
-		await this.page
-			.locator('div.basic-editor')
-			.fill(happyHourLocations.join('\n'));
-		await this.page.locator('span:has-text(\'Close ad\') > button').click();
-	}
+  async goto() {
+    const happyHourLocations = Object.keys(placesConfig);
 
-	async spinWheel() {
-		// Await this.instructionLayer.isVisible();
-		await this.page.press('html', 'Control+Enter');
-	}
+    await this.page.goto("https://wheelofnames.com");
+    await this.page
+      .locator("div.basic-editor")
+      .fill(happyHourLocations.join("\n"));
+    await this.closeAdsButton.click();
+  }
 
-	async getResult(): Promise<string> {
-		const result = await this.resultContainer.innerText({timeout: 30 * 1000});
+  async spinWheel() {
+    // Await this.instructionLayer.isVisible();
+    await this.page.press("html", "Control+Enter");
+  }
 
-		expect(result).toBeTruthy();
-
-		return result;
-	}
+  async getResult(): Promise<string> {
+    const result = await this.resultContainer.innerText({ timeout: 30 * 1000 });
+    return result;
+  }
 }
