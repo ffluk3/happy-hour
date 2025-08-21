@@ -6,7 +6,7 @@ orbs:
 jobs:
   unit_test:
     docker:
-      - image: mcr.microsoft.com/playwright:focal
+      - image: mcr.microsoft.com/playwright:v1.55.0-noble
     steps:
       - checkout
       - node/install-packages:
@@ -18,7 +18,7 @@ jobs:
           path: coverage
   lint:
     docker:
-      - image: mcr.microsoft.com/playwright:focal
+      - image: mcr.microsoft.com/playwright:v1.55.0-noble
     steps:
       - checkout
       - node/install-packages:
@@ -28,7 +28,7 @@ jobs:
           name: Lint the project
   happy_hour:
     docker:
-      - image: mcr.microsoft.com/playwright:focal
+      - image: mcr.microsoft.com/playwright:v1.55.0-noble
     environment:
       NODE_ENV: development
     steps:
@@ -59,3 +59,13 @@ workflows:
       - happy_hour:
           requires:
             - request_happy_hour
+  nightly:
+    triggers:
+      - schedule:
+          cron: "30 15 * * 2"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - happy_hour

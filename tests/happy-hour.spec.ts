@@ -1,25 +1,28 @@
-import {test} from './fixtures/wheel-of-names';
-import {sendEmailForHappyHour} from '../tools/email';
-import {readFile} from 'fs/promises';
+import { test } from "./fixtures/wheel-of-names";
+import { expect } from "@playwright/test";
+import { sendEmailForHappyHour } from "../tools/email";
 
-test.describe('Happy Hour Wheel Spin', () => {
-	test('spins the wheel and returns the result', async ({browserName, wheelOfNames}) => {
-		await wheelOfNames.spinWheel();
-		const result = await wheelOfNames.getResult();
+test.describe("Happy Hour Wheel Spin", () => {
+  test("spins the wheel and returns the result", async ({
+    browserName,
+    wheelOfNames,
+  }) => {
+    await wheelOfNames.spinWheel();
+    const result = await wheelOfNames.getResult();
 
-		console.log(`Option ${browserName}: ${result}`);
+    expect(result).not.toBeNull();
 
-		await wheelOfNames.page.screenshot({
-			path: `${process.cwd()}/images/wheel-spin.jpg`,
-			timeout: 60 * 1000,
-			quality: 20,
-		});
+    console.log(`Option ${browserName}: ${result}`);
 
-		// eslint-disable-next-line playwright/no-conditional-in-test -- Is this really a test at this point?
-		if (process.env.CI) {
-			await sendEmailForHappyHour(result);
-		}
+    await wheelOfNames.page.screenshot({
+      path: `${process.cwd()}/images/wheel-spin.jpg`,
+      timeout: 60 * 1000,
+      quality: 20,
+    });
 
-		const placesConfig = readFile;
-	});
+    // eslint-disable-next-line playwright/no-conditional-in-test -- Is this really a test at this point?
+    if (process.env.CI) {
+      await sendEmailForHappyHour(result);
+    }
+  });
 });
